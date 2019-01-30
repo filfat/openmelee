@@ -4,6 +4,8 @@
 // Based on HAL's modifications to the offical SDK
 
 namespace HSD {
+    GX::GXFifoObj* main_fifo;
+
     __int32_t HSDInitComponent(void) {
         return stub();
     }
@@ -21,7 +23,8 @@ namespace HSD {
     }
 
     __int32_t HSDGXSetFifoObj(GX::GXFifoObj *fifo) {
-        return stub();
+        main_fifo = fifo;
+        return 0;
     }
 
     __int32_t HSDVISetUserPostRetraceCallback(void) {

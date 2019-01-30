@@ -3,7 +3,7 @@
 
 namespace OS {
     void OSInit (void) {
-        stub();
+        // TODO: Init things like a global logger here etc
     }
 
     void OSInitAlarm(void) {

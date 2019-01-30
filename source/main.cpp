@@ -6,10 +6,10 @@ int main(int argc, char *argv[]) {
     OS::OSInit();
 
     OS::OSReport("# ---------------------------------------------\n");
-    OS::OSReport("# OpenMelee %s\n", "(Based on SSBM NTSC 1.02)");
+    OS::OSReport("# OpenMelee %s\n", "(Based on SSBM 1.02 NTSC)");
 
     VI::VIInit();                                               // 8034ee9c
-    __int32_t res = DVD::DVDInit();                                       // 80337de8
+    __int32_t res = DVD::DVDInit();
     PAD::PADInit(res);                                          // 8034d7ec
     CARD::CARDInit();                                           // 803530e4
 
