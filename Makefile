@@ -47,7 +47,7 @@ BUILDLIST 	:= $(patsubst $(INCLUDES)/%,$(BUILD)/%,$(INCDIRS))
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
-CFLAGS	:=	-g -MD -W -O0 -fpermissive -ffunction-sections $(DEFINES)
+CFLAGS	:=	-g -MD -W -O2 -fpermissive -ffunction-sections $(DEFINES)
 
 CFLAGS	+=	$(INCLUDE) -Wmissing-field-initializers -Wno-gnu-designator -Wno-unused-value -D__LINUX__
 

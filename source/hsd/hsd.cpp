@@ -20,7 +20,7 @@ namespace HSD {
         return stub();
     }
 
-    __int32_t HSDGXSetFifoObj(int32_t u1) {
+    __int32_t HSDGXSetFifoObj(GX::GXFifoObj *fifo) {
         return stub();
     }
 
@@ -28,7 +28,7 @@ namespace HSD {
         return stub();
     }
 
-    __int32_t HSDVISetBlack(int32_t u1) {
+    __int32_t HSDVISetBlack(bool off) {
         return stub();
     }
 }

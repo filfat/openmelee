@@ -3,38 +3,43 @@
 #include "main.h"
 
 int main(int argc, char *argv[]) {
-    __int32_t res = DB::DBInit();                               // 80335ec0
-    OS::OSInit();                                               // 80342fc8
+    __int32_t res = DB::DBInit();
+    OS::OSInit();
+
+    OS::OSReport("# ---------------------------------------------\n");
+    OS::OSReport("# OpenMelee %s\n", "(Based on SSBM NTSC 1.02)");
+
     VI::VIInit();                                               // 8034ee9c
     res = DVD::DVDInit();                                       // 80337de8
     PAD::PADInit(res);                                          // 8034d7ec
     CARD::CARDInit();                                           // 803530e4
 
-    OS::OSInitAlarm();                                          // 80343720
+    OS::OSInitAlarm();
 
     //TODO: Call to unknown function                               80225374
     //TODO: Call to unknown function                               8015fda4
 
-    __uint32_t mem_size = OS::OSGetConsoleSimulatedMemSize();   // 80347bf0
+    __uint32_t mem_size = OS::OSGetPhysicalMemSize();
     if(mem_size /* FIXME: figure out actual check here */) {
-        OS::OSAllocFromArenaHi(0x1800000, 4);
+        OS::OSAllocFromArenaHi((__uint32_t)0x1800000, (__uint32_t)4);
+        OS::OSReport("# Arena Size %d MB\n", mem_size / 1000 / 1000);
     }
 
     //TODO: Call to unknown function                               803444c8
     //TODO: Call to unknown function                               803444d0
 
-    HSD::HSDSetInitParameter(1, 2);                             // 803756f8
+    HSD::HSDSetInitParameter(1, 2);
 
     //TODO: Call to unknown function                               80228c4c
 
-    HSD::HSDAllocateXFB(2, NULL);                               // 80374f7c
-    HSD::HSDAllocateFIFO(0x40000);                              // 80375194
+    HSD::HSDAllocateXFB(2, NULL);
+    HSD::HSDAllocateFIFO(0x40000);
 
-    res = GX::GXInit();                                         // 8033a780
-    HSD::HSDGXSetFifoObj(res);                                  // 80374f60
+    GX::GXFifoObj *fifo = GX::GXInit(NULL, NULL);
+    HSD::HSDGXSetFifoObj(fifo);
 
-    res = GX::GXSetMisc(1, 8);                                  // 8033cbc0
-    OS::OSGetTick();                                            // 8034c408
+    res = GX::GXSetMisc(1, 8);
+    __int32_t time = OS::OSGetTick();
 
     //TODO: Call to unknown function                               8002838c
     //TODO: Call to unknown function                               80019aac
@@ -43,7 +48,7 @@ int main(int argc, char *argv[]) {
 
     //TODO: Call to unknown function                               8037598c
 
-    HSD::HSDVISetBlack(NULL);                                   // 803767a0
+    HSD::HSDVISetBlack(false);
 
     //TODO: Call to unknown function                               8001564c
     //TODO: Call to unknown function                               80015f3c
@@ -61,36 +66,13 @@ int main(int argc, char *argv[]) {
         // TODO: Branch                                            80160018
     }
 
-    //TODO: Call to unknown function                               8022886c
-
-    OS::OSReport("# ---------------------------------------------\n", (__int32_t *)0x10000);
-    OS::OSReport("#    Super Smash Bros. Melee\n", (__int32_t *)0x10000);
-
-    //TODO: Call to unknown function                               8000ad8c
-    OS::OSReport("# Distribution %d\n", NULL);
-
-    //TODO: Call to unknown function                               8000adf4
-    OS::OSReport("# Language %d\n", NULL);
-
-    OS::OSReport("# DbLevel %d\n", NULL);
-    OS::OSReport("# Arena Size %d MB\n", NULL);
-
-    //TODO: Call to unknown function                               800154bc
-    OS::OSReport("# ARAM Free Size %d MB\n", NULL);
-
-    //TODO: Call to unknown function                               8000afbc
-    //TODO: Call to unknown function                               801692e8
-
-    OS::OSReport("# GC Calendar Year %d Month %d Day %d\n", NULL);
-    OS::OSReport("#             Hour %d Min %d Sec %d \n", NULL);
-
     if (false) {
         // TODO: Branch                                            80160170
     } else {
-        
+
         // TODO: Branch                                            80160168
     }
 
-    OS::OSPanic(NULL, NULL, NULL, NULL);
+    OS::OSPanic(__FILE__, __LINE__, "TODO");
     return 0;
 }

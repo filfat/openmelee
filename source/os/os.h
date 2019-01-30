@@ -1,16 +1,18 @@
 #pragma once
 
 #include <iostream>
+#include <time.h>
 
 namespace OS {
-    __int32_t OSInit (void);
-    __int32_t OSInitAlarm(void);
+    void OSInit (void);                                                 // 80342fc8
+    void OSInitAlarm(void);                                             // 80343720
 
-    void OSReport (const char *out, __int32_t *u1);
-    int32_t OSPanic(__int32_t u1, __int32_t *u2, __int32_t u3, __int32_t u4);
+    void OSReport(const char *out, ...);
+    void OSPanic(char* file, int line, char* out, ...);
 
-    __uint32_t OSGetConsoleSimulatedMemSize(void);
-    __int32_t OSAllocFromArenaHi(int32_t u1, int32_t u2);
+    __uint32_t OSGetPhysicalMemSize(void);
+    __uint32_t OSGetConsoleSimulatedMemSize(void);                      // 80347bf0
+    void* OSAllocFromArenaHi(__uint32_t size, __uint32_t align);        // 80344514
 
-    __int32_t OSGetTick(void);
+    __int32_t OSGetTick(void);                                          // 8034c408
 }
