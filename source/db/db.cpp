@@ -3,8 +3,6 @@
 
 namespace DB {
     __int32_t DBInit (void) {
-        stub();
-
-        return -1;
+        return stub();
     }
 }
