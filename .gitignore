@@ -1,5 +1,6 @@
 # Dist
 build/
+builddir/
 original_source/
 
 # IDE

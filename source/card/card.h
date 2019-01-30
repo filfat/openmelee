@@ -3,5 +3,5 @@
 #include <iostream>
 
 namespace CARD {
-    __int32_t CARDInit (void);
+    int32_t CARDInit (void);
 }

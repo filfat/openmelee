@@ -7,5 +7,5 @@
 #include "../os/os.h"
 
 namespace DVD {
-    __int32_t DVDInit (void); // 80337de8
+    int32_t DVDInit (void); // 80337de8
 }

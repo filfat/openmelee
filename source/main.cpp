@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     OS::OSReport("# OpenMelee %s\n", "(Based on SSBM 1.02 NTSC)");
 
     VI::VIInit();                                               // 8034ee9c
-    __int32_t res = DVD::DVDInit();
+    int32_t res = DVD::DVDInit();
     PAD::PADInit(res);                                          // 8034d7ec
     CARD::CARDInit();                                           // 803530e4
 
@@ -18,9 +18,9 @@ int main(int argc, char *argv[]) {
     //TODO: Call to unknown function                               80225374
     //TODO: Call to unknown function                               8015fda4
 
-    __uint32_t mem_size = OS::OSGetPhysicalMemSize();
+    uint32_t mem_size = OS::OSGetPhysicalMemSize();
     if(mem_size /* FIXME: figure out actual check here */) {
-        OS::OSAllocFromArenaHi((__uint32_t)0x1800000, (__uint32_t)4);
+        OS::OSAllocFromArenaHi((uint32_t)0x1800000, (uint32_t)4);
         OS::OSReport("# Arena Size %d MB\n", mem_size / 1000 / 1000);
     }
 
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
     HSD::HSDGXSetFifoObj(fifo);
 
     res = GX::GXSetMisc(1, 8);
-    __int32_t time = OS::OSGetTick();
+    int32_t time = OS::OSGetTick();
 
     //TODO: Call to unknown function                               8002838c
     //TODO: Call to unknown function                               80019aac

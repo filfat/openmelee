@@ -3,4 +3,4 @@
 #include <iostream>
 #define stub() _stub(__FUNCTION__, __FILE__, __LINE__)
 
-__int32_t _stub (char const *function, char const *file, long line);
+int32_t _stub (char const *function, char const *file, long line);

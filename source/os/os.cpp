@@ -17,24 +17,25 @@ namespace OS {
         vprintf(out, args);
         va_end(args);
     }
-    void OSPanic(char* file, int line, char* out, ...) {
+    void OSPanic(const char* file, int line, const char* out, ...) {
         printf("\033[31;1m(FATAL)\033[0m    %s:%d %s\n", file, line, out);
         exit(1);
     }
 
-    __uint32_t OSGetPhysicalMemSize(void) {
+    uint32_t OSGetPhysicalMemSize(void) {
         return OSGetConsoleSimulatedMemSize();
     }
 
-    __uint32_t OSGetConsoleSimulatedMemSize(void) {
+    uint32_t OSGetConsoleSimulatedMemSize(void) {
         return 0x1800000;
     }
 
-    void* OSAllocFromArenaHi(__uint32_t size, __uint32_t align) {
-        return (void*)aligned_alloc(align, size);
+    void* OSAllocFromArenaHi(uint32_t size, uint32_t align) {
+		return (void*)stub();
+        //return (void*)aligned_alloc(align, size);
     }
 
-    __int32_t OSGetTick(void) {
+    int32_t OSGetTick(void) {
         return time(NULL);
     }
 }

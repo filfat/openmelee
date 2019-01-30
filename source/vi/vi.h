@@ -3,5 +3,5 @@
 #include <iostream>
 
 namespace VI {
-    __int32_t VIInit (void);
+    int32_t VIInit (void);
 }
