@@ -1,12 +1,14 @@
+#include "../../libs/termcolor.hpp"
+
 #include "gx.h"
 #include "../stub/stub.h"
 
 namespace GX {
-    //GLFWwindow* window;
+    GLFWwindow* window;
     GX::GXFifoObj* main_fifo;
 
     GXFifoObj* GXInit (void* base, uint32_t size) {
-        /*if(!glfwInit()) {
+        if(!glfwInit()) {
             OS::OSPanic(__FILE__, __LINE__, "GXInit->Failed initialize GLFW");
         }
 
@@ -17,9 +19,8 @@ namespace GX {
 
         GX::window = glfwCreateWindow(584, 480, "OpenMelee", NULL, NULL);
 
-        printf("\033[32;1m(GX)\033[0m       GXInit->Info: Created window\n");*/
-
-        stub();
+        std::cout << termcolor::blue << "(GX)       " << termcolor::reset;
+        printf("GXInit->Info: Created window\n");
         
         main_fifo = new GXFifoObj();
         return main_fifo;
