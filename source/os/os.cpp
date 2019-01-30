@@ -13,6 +13,10 @@ namespace OS {
     void OSReport (const char *out, __int32_t *u1) {
         printf(out);
     }
+    int32_t OSPanic(__int32_t u1, __int32_t *u2, __int32_t u3, __int32_t u4) {
+        stub();
+        exit(1);
+    }
 
     __uint32_t OSGetConsoleSimulatedMemSize(void) {
         return stub();

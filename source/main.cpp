@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
     //TODO: Call to unknown function                               803a6048
     //TODO: Call to unknown function                               8015fba4
 
-    if(false) {
+    if (false) {
         // TODO: Branch                                            80160018
     }
 
@@ -91,5 +91,6 @@ int main(int argc, char *argv[]) {
         // TODO: Branch                                            80160168
     }
 
+    OS::OSPanic(NULL, NULL, NULL, NULL);
     return 0;
 }

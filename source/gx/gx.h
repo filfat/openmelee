@@ -2,6 +2,9 @@
 
 #include <iostream>
 
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
 namespace GX {
     __int32_t GXInit (void);
 

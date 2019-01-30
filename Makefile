@@ -56,7 +56,7 @@ CXXFLAGS	:= $(CFLAGS) -Wno-missing-field-initializers -Wno-implicit-fallthrough 
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	=	-specs=${DEVKITPRO}/libnx/switch.specs -g -Wl,-Map,$(notdir $*.map)
 
-LIBS	:=  
+LIBS	:= -lm -lGLEW -lglfw -lGL
 
 #---------------------------------------------------------------------------------
 $(TARGET): $(OBJECTS)
