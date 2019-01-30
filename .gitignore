@@ -1,2 +1,6 @@
+# Dist
 build/
 original_source/
+
+# IDE
+.vscode/
