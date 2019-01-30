@@ -1,3 +1,5 @@
+#include "../../libs/termcolor.hpp"
+
 #include "os.h"
 #include "../stub/stub.h"
 
@@ -13,12 +15,12 @@ namespace OS {
     void OSReport(const char *out, ...) {
         va_list args;
         va_start(args, out);
-        printf("\033[34;1m(OSReport)\033[0m ");
+        std::cout << termcolor::blue << "(OSReport) " << termcolor::reset;
         vprintf(out, args);
         va_end(args);
     }
     void OSPanic(const char* file, int line, const char* out, ...) {
-        printf("\033[31;1m(FATAL)\033[0m    %s:%d %s\n", file, line, out);
+        std::cout << termcolor::red << "(FATAL)    " << termcolor::reset << file << ':' << line << ' ' << out << std::endl;
         exit(1);
     }
 

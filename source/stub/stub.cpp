@@ -1,6 +1,8 @@
+#include "../../libs/termcolor.hpp"
+
 #include "stub.h"
 
 int32_t _stub (char const *function, char const *file, long line) {
-    std::cout << "\033[33;1m(STUBBED)\033[0m  " << file << ':' << line << ' ' << function << std::endl;
+    std::cout << termcolor::yellow << "(STUBBED)  " << termcolor::reset << file << ':' << line << ' ' << function << std::endl;
     return NULL;
 }
