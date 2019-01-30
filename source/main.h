@@ -5,3 +5,4 @@
 #include "pad/pad.h"
 #include "card/card.h"
 #include "hsd/hsd.h"
+#include "gx/gx.h"

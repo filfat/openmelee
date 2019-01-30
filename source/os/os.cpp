@@ -10,9 +10,8 @@ namespace OS {
         return stub();
     }
     
-    void OSReport (std::string out, __int32_t u1) {
-        printf((char*)out.c_str());
-        stub();
+    void OSReport (const char *out, __int32_t *u1) {
+        printf(out);
     }
 
     __uint32_t OSGetConsoleSimulatedMemSize(void) {
@@ -20,6 +19,10 @@ namespace OS {
     }
 
     __int32_t OSAllocFromArenaHi(int32_t u1, int32_t u2) {
+        return stub();
+    }
+
+    __int32_t OSGetTick(void) {
         return stub();
     }
 }
