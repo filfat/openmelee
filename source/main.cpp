@@ -3,14 +3,13 @@
 #include "main.h"
 
 int main(int argc, char *argv[]) {
-    __int32_t res = DB::DBInit();
     OS::OSInit();
 
     OS::OSReport("# ---------------------------------------------\n");
     OS::OSReport("# OpenMelee %s\n", "(Based on SSBM NTSC 1.02)");
 
     VI::VIInit();                                               // 8034ee9c
-    res = DVD::DVDInit();                                       // 80337de8
+    __int32_t res = DVD::DVDInit();                                       // 80337de8
     PAD::PADInit(res);                                          // 8034d7ec
     CARD::CARDInit();                                           // 803530e4
 
