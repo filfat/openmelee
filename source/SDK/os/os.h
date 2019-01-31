@@ -10,8 +10,27 @@ namespace OS {
     void OSInit (void);                                                 // 80342fc8
     void OSInitAlarm(void);                                             // 80343720
 
+    /** \brief Prints message to debug interface
+      * \param out the message to print
+      * \return void
+      */
     void OSReport(const char *out, ...);
+
+    /** \brief Prints message to debug interface
+      * \param out the message to print
+      * \return void
+      */
     void OSHalt(const char *out, ...);
+
+    /** \brief Prints message to debug interface
+      * \param file the current file (use __FILE__)
+      * \param line the message to print (use __LINE__)
+      * \param out the message to print
+      * \return void
+      * 
+      * Halts the application with a non-zero exit code
+      * after priting the message using printf.
+      */
     void OSPanic(const char* file, int line, const char* out, ...);
 
     uint32_t OSGetPhysicalMemSize(void);

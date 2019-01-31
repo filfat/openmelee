@@ -13,5 +13,14 @@ namespace HSD {
     int32_t HSDAllocateFIFO(int32_t u1);                  // 80375194
     int32_t HSDGXSetFifoObj(GX::GXFifoObj *fifo);         // 80374f60
     int32_t HSDVISetUserPostRetraceCallback(void);        // 80375934
-    int32_t HSDVISetBlack(bool off);                      // 803767a0
+
+    /** \brief Enables/Disables blacking out the screen.
+      * \param black true if on, false if of
+      * \return void
+      * 
+      * (803767a0)
+      * The change isn't supposed to take effect till
+      * after VIFlush() is called.
+      */
+    int32_t HSDVISetBlack(bool black);
 }
