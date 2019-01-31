@@ -1,3 +1,3 @@
 #!/bin/sh
 
-find -name "*.cpp"
+find -name "*.cpp" -not -path "./original_source/*"

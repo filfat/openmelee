@@ -9,7 +9,7 @@ namespace GX {
         uint8_t pad[128];
     } GXFifoObj;
 
-    extern GXFifoObj* main_fifo;
+    extern GXFifoObj* g_main_fifo;
 
     GXFifoObj* GXInit (void* base, uint32_t size);    // 8033a780
     int32_t GXSetMisc (int32_t u1, int32_t val);  // 8033cbc0

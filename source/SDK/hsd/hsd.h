@@ -5,7 +5,7 @@
 #include "../gx/gx.h"
 
 namespace HSD {
-    extern GX::GXFifoObj* main_fifo;
+    extern GX::GXFifoObj* g_main_fifo;
 
     int32_t HSDInitComponent(void);
     int32_t HSDSetInitParameter(int32_t u1, int32_t u2);  // 803756f8

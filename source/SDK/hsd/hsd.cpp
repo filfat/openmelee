@@ -4,7 +4,7 @@
 // Based on HAL's modifications to the offical SDK
 
 namespace HSD {
-    GX::GXFifoObj* main_fifo;
+    GX::GXFifoObj *g_main_fifo;
 
     int32_t HSDInitComponent(void) {
         return stub();
@@ -23,7 +23,7 @@ namespace HSD {
     }
 
     int32_t HSDGXSetFifoObj(GX::GXFifoObj *fifo) {
-        main_fifo = fifo;
+        g_main_fifo = fifo;
         return 0;
     }
 
