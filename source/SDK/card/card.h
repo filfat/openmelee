@@ -3,5 +3,5 @@
 #include <iostream>
 
 namespace CARD {
-    int32_t CARDInit (void);
+    int32_t CARDInit (void); // 803530e4
 }

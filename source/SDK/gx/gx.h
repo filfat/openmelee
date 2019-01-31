@@ -2,9 +2,6 @@
 
 #include <iostream>
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
 #include "../os/os.h"
 
 namespace GX {
@@ -12,7 +9,6 @@ namespace GX {
         uint8_t pad[128];
     } GXFifoObj;
 
-    extern GLFWwindow* window;
     extern GXFifoObj* main_fifo;
 
     GXFifoObj* GXInit (void* base, uint32_t size);    // 8033a780

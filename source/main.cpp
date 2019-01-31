@@ -8,10 +8,10 @@ int main(int argc, char *argv[]) {
     OS::OSReport("# ---------------------------------------------\n");
     OS::OSReport("# OpenMelee %s\n", "(Based on SSBM 1.02 NTSC)");
 
-    VI::VIInit();                                               // 8034ee9c
-    int32_t res = DVD::DVDInit();
-    PAD::PADInit(res);                                          // 8034d7ec
-    CARD::CARDInit();                                           // 803530e4
+    VI::VIInit();
+    DVD::DVDInit();
+    PAD::PADInit();
+    CARD::CARDInit();
 
     OS::OSInitAlarm();
 
@@ -37,8 +37,7 @@ int main(int argc, char *argv[]) {
     GX::GXFifoObj *fifo = GX::GXInit(NULL, NULL);
     HSD::HSDGXSetFifoObj(fifo);
 
-    res = GX::GXSetMisc(1, 8);
-    int32_t time = OS::OSGetTick();
+    int32_t res = GX::GXSetMisc(1, 8);
 
     //TODO: Call to unknown function                               8002838c
     //TODO: Call to unknown function                               80019aac
@@ -60,6 +59,13 @@ int main(int argc, char *argv[]) {
     //TODO: Call to unknown function                               8001f87c
     //TODO: Call to unknown function                               803a6048
     //TODO: Call to unknown function                               8015fba4
+
+    int32_t time = OS::OSGetTick();
+    OS::OSCalendarTime *calendar = new OS::OSCalendarTime();
+    OS::OSTicksToCalendarTime(time, calendar);
+
+    OS::OSReport("# GC Calendar Year %d Month %d Day %d\n", calendar->year, calendar->mon, calendar->mday);
+    OS::OSReport("#             Hour %d Min %d Sec %d \n", calendar->hour, calendar->min, calendar->sec);
 
     if (false) {
         // TODO: Branch                                            80160018

@@ -1,10 +1,11 @@
-#include "os/os.h"
-#include "vi/vi.h"
-#include "dvd/dvd.h"
-#include "pad/pad.h"
-#include "card/card.h"
-#include "hsd/hsd.h"
-#include "gx/gx.h"
+#include "SDK/os/os.h"
+
+#include "SDK/vi/vi.h"
+#include "SDK/dvd/dvd.h"
+#include "SDK/pad/pad.h"
+#include "SDK/card/card.h"
+#include "SDK/hsd/hsd.h"
+#include "SDK/gx/gx.h"
 
 /* void DebugOutput(void) {
     //TODO: Call to unknown function                               8022886c
@@ -27,6 +28,5 @@
     //TODO: Call to unknown function                               8000afbc
     //TODO: Call to unknown function                               801692e8
 
-    OS::OSReport("# GC Calendar Year %d Month %d Day %d\n");
-    OS::OSReport("#             Hour %d Min %d Sec %d \n");
+    
 } */

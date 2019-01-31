@@ -1,7 +1,8 @@
 #include "../../libs/termcolor.hpp"
 
 #include "os.h"
-#include "../stub/stub.h"
+#include "../../stub/stub.h"
+#include "../../logger/logger.h"
 
 namespace OS {
     void OSInit (void) {
@@ -37,7 +38,27 @@ namespace OS {
         //return (void*)aligned_alloc(align, size);
     }
 
+    // Time
+    // ==============================================================
+
     int32_t OSGetTick(void) {
-        return time(NULL);
+        return time(0);
+    }
+
+    void OSTicksToCalendarTime(int32_t time, OS::OSCalendarTime *calendar) {
+        std::time_t t = std::time(0);
+        std::tm* now = std::localtime(&t);
+
+        calendar->sec   = now->tm_sec;
+        calendar->min   = now->tm_min;
+        calendar->hour  = now->tm_hour;
+        calendar->mday  = now->tm_mday;
+        calendar->mon   = now->tm_mon;
+        calendar->year  = (1900 + now->tm_year);
+        calendar->wday  = now->tm_wday;
+        calendar->yday  = now->tm_yday;
+
+        calendar->msec  = 0; // FIXME:
+        calendar->usec  = 0; // FIXME:
     }
 }
