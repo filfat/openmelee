@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
     //TODO: Call to unknown function                               8002838c
     //TODO: Call to unknown function                               80019aac
 
-    HSD::HSDVISetUserPostRetraceCallback();                     // 80375934
+    HSD::HSDVISetUserPostRetraceCallback();
 
     //TODO: Call to unknown function                               8037598c
 
@@ -78,6 +78,6 @@ int main(int argc, char *argv[]) {
         // TODO: Branch                                            80160168
     }
 
-    OS::OSPanic(__FILE__, __LINE__, "TODO");
+    OS::OSHalt("Exiting...");
     return 0;
 }

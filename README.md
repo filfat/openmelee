@@ -1,5 +1,5 @@
 # openmelee
-[![Build Status](https://travis-ci.org/filfat/openmelee.svg?branch=master)](https://travis-ci.org/filfat/openmelee)  [![Twitch](https://img.shields.io/badge/Watch%20me%20on-Twitch-%236441A4.svg)](https://www.twitch.tv/filiphsandstrom)
+[![Build Status](https://travis-ci.org/filfat/openmelee.svg?branch=master)](https://travis-ci.org/filfat/openmelee)  [![Twitch](https://img.shields.io/badge/watch%20me%20on-Twitch-%236441A4.svg)](https://www.twitch.tv/filiphsandstrom)
 
 (Really early) Attempt at an open source Super Smash Bros. Melee reimplementation.
 

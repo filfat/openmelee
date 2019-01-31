@@ -11,6 +11,7 @@ namespace OS {
     void OSInitAlarm(void);                                             // 80343720
 
     void OSReport(const char *out, ...);
+    void OSHalt(const char *out, ...);
     void OSPanic(const char* file, int line, const char* out, ...);
 
     uint32_t OSGetPhysicalMemSize(void);
@@ -30,8 +31,8 @@ namespace OS {
         int32_t wday;   // days since Sunday [0, 6]
         int32_t yday;   // days since January 1 [0, 365]
 
-        int32_t msec;   // milliseconds after the second [0,999]
-        int32_t usec;   // microseconds after the millisecond [0,999]
+        int32_t msec;   // milliseconds after the second [0, 999]
+        int32_t usec;   // microseconds after the millisecond [0, 999]
     } OSCalendarTime;
 
     int32_t OSGetTick(void); // 8034c408
