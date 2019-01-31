@@ -49,7 +49,7 @@ namespace OS {
         std::time_t t = std::time(0);
         std::tm* now = std::localtime(&t);
 
-        calendar->sec   = now->tm_sec;
+        calendar->sec   = now->tm_sec; // FIXME: 61 was removed in C++11
         calendar->min   = now->tm_min;
         calendar->hour  = now->tm_hour;
         calendar->mday  = now->tm_mday;
