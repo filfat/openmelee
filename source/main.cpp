@@ -78,6 +78,8 @@ int main(int argc, char *argv[]) {
         // TODO: Branch                                            80160168
     }
 
+    while(!VI::VIShouldCloseWindow()) {};
+
     OS::OSHalt("Exiting...");
     return 0;
 }

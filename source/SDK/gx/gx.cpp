@@ -1,5 +1,3 @@
-#include "../../libs/termcolor.hpp"
-
 #include "gx.h"
 #include "../../stub/stub.h"
 

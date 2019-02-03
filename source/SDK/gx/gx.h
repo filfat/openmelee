@@ -1,7 +1,6 @@
 #pragma once
 
 #include <iostream>
-
 #include "../os/os.h"
 
 namespace GX {

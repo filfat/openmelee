@@ -1,11 +1,18 @@
 #include "vi.h"
 #include "../../stub/stub.h"
+#include "../../libs/termcolor.hpp"
+
+static void glfwError(int id, const char* description) {
+  std::cout << description << std::endl;
+}
 
 namespace VI {
-    //GLFWwindow* g_window;
+    GLFWwindow* g_window;
 
     int32_t VIInit (void) {
-        /*if(!glfwInit()) {
+        glfwSetErrorCallback(&glfwError);
+
+        if(!glfwInit()) {
             OS::OSPanic(__FILE__, __LINE__, "VIInit->Failed initialize GLFW");
         }
 
@@ -14,11 +21,15 @@ namespace VI {
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-        GX::g_window = glfwCreateWindow(640, 240, "OpenMelee", NULL, NULL);
+        VI::g_window = glfwCreateWindow(640, 240, "OpenMelee", NULL, NULL);
 
         std::cout << termcolor::blue << "(VI)       " << termcolor::reset;
-        printf("VIInit->Info: Created window\n");*/
+        printf("VIInit->Info: Created window\n");
 
         return stub();
+    }
+
+    bool VIShouldCloseWindow() {
+        return glfwWindowShouldClose(VI::g_window);
     }
 }
