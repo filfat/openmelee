@@ -1,8 +1,13 @@
-#include <stdio.h>
+#define __DEBUG__
 
+#include <stdio.h>
 #include "main.h"
 
 int main(int argc, char *argv[]) {
+    #ifndef __DEBUG__
+    stdout = freopen("openmelee.log", "w", stdout);
+    #endif
+
     OS::OSInit();
 
     OS::OSReport("# ---------------------------------------------\n");
@@ -67,19 +72,10 @@ int main(int argc, char *argv[]) {
     OS::OSReport("# GC Calendar Year %d Month %d Day %d\n", calendar->year, calendar->mon, calendar->mday);
     OS::OSReport("#             Hour %d Min %d Sec %d \n", calendar->hour, calendar->min, calendar->sec);
 
-    if (false) {
-        // TODO: Branch                                            80160018
-    }
+    while(!VI::VIShouldCloseWindow()) {
+        GX::GXDrawDone();
+    };
 
-    if (false) {
-        // TODO: Branch                                            80160170
-    } else {
-
-        // TODO: Branch                                            80160168
-    }
-
-    while(!VI::VIShouldCloseWindow()) {};
-
-    OS::OSHalt("Exiting...");
+    OS::OSHalt("Exiting...\n");
     return 0;
 }

@@ -1,6 +1,8 @@
 #pragma once
 
 #include <iostream>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include "../os/os.h"
 
 namespace GX {
@@ -12,4 +14,6 @@ namespace GX {
 
     GXFifoObj* GXInit (void* base, uint32_t size);    // 8033a780
     int32_t GXSetMisc (int32_t u1, int32_t val);  // 8033cbc0
+
+    void GXDrawDone (void);
 }

@@ -5,3 +5,6 @@ original_source/
 
 # IDE
 .vscode/
+
+# Logging
+*.log

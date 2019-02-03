@@ -1,5 +1,6 @@
 #include "gx.h"
 #include "../../stub/stub.h"
+#include "../vi/vi.h"
 
 namespace GX {
     GX::GXFifoObj* g_main_fifo;
@@ -11,5 +12,10 @@ namespace GX {
 
     int32_t GXSetMisc (int32_t u1, int32_t u2) {
         return stub();
+    }
+
+    void GXDrawDone (void) {
+        glfwSwapBuffers(VI::g_window);
+        glfwPollEvents();
     }
 }

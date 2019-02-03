@@ -3,7 +3,8 @@
 #include "../../libs/termcolor.hpp"
 
 static void glfwError(int id, const char* description) {
-  std::cout << description << std::endl;
+    std::cout << termcolor::blue << "(VI)       " << termcolor::reset;
+    printf("GLFW->Error: %s\n", description);
 }
 
 namespace VI {
