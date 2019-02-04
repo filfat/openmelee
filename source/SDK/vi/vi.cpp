@@ -22,7 +22,7 @@ namespace VI {
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-        VI::g_window = glfwCreateWindow(640, 240, "OpenMelee", NULL, NULL);
+        VI::g_window = glfwCreateWindow(640, 480, "OpenMelee", NULL, NULL);
 
         std::cout << termcolor::blue << "(VI)       " << termcolor::reset;
         printf("VIInit->Info: Created window\n");
