@@ -1,25 +1,27 @@
-#include "../../libs/termcolor.hpp"
-
 #include "dvd.h"
+#include "../../../libs/termcolor.hpp"
 #include "../../stub/stub.h"
+#include "../../engine/iso/iso.h"
 
-#define _HOME_PATH "~/.openmelee"
+#ifdef __LINUX__
+    #define HOME_PATH "~/.openmelee"
+#elif __WIN32__
+    #define HOME_PATH "%%appdata%%/.openmelee"
+#else
+    #define HOME_PATH "/openmelee"
+#endif
+
 
 namespace DVD {
     int32_t DVDInit (void) {
-        struct stat info;
-
-        if(stat(_HOME_PATH, &info) != 0) {
+        if(opendir(HOME_PATH)) {
             std::cout << termcolor::blue << "(DVD)      " << termcolor::reset;
-            printf("DVDInit->Info: Creating game folder (%s)\n", _HOME_PATH);
+            printf("DVDInit->Info: Creating game folder (%s)\n", HOME_PATH);
             
-            #ifdef __LINUX__
-                system("mkdir ~/.openmelee");
-                system("mkdir ~/.openmelee/assets");
-            #endif
+            system(std::string(std::string("mkdir ") + std::string(HOME_PATH)).c_str());
         }
         
-        if(stat("~/.openmelee/assets/", &info) != 0) {
+        if(opendir(std::string(std::string(HOME_PATH) + "/assets").c_str())) {
             std::cout << termcolor::blue << "(DVD)      " << termcolor::reset;
             printf("DVDInit->Warning: assets are missing\n");
 
@@ -38,6 +40,8 @@ namespace DVD {
 
                 return -1;
             }
+
+            Engine::ISO::ExtractISO(iso_file);
         }
 
 		return stub();

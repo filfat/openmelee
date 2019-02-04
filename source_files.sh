@@ -1,3 +1,3 @@
 #!/bin/sh
-
-find -name "*.cpp" -not -path "./original_source/*" -not -path "./subprojects/*"
+find source -regex '.*\.\(c\|cpp\|h\)$' -print
+find libs -regex '.*/.*\.\(c\|cpp\|h\)$' -print

@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <dirent.h>
 #include "../../libs/sfd/sfd.h"
 #include "../os/os.h"
 
