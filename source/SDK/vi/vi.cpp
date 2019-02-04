@@ -10,7 +10,7 @@ static void glfwError(int id, const char* description) {
 namespace VI {
     GLFWwindow* g_window;
 
-    int32_t VIInit (void) {
+    void VIInit (void) {
         glfwSetErrorCallback(&glfwError);
 
         if(!glfwInit()) {
@@ -26,8 +26,6 @@ namespace VI {
 
         std::cout << termcolor::blue << "(VI)       " << termcolor::reset;
         printf("VIInit->Info: Created window\n");
-
-        return stub();
     }
 
     bool VIShouldCloseWindow() {

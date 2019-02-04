@@ -1,9 +1,10 @@
 #pragma once
 
 #include <iostream>
+#include <cstdlib>
 #include <sys/types.h>
 #include <sys/stat.h>
-
+#include "../../libs/sfd/sfd.h"
 #include "../os/os.h"
 
 namespace DVD {

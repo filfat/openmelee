@@ -8,6 +8,6 @@
 namespace VI {
     extern GLFWwindow* g_window;
     
-    int32_t VIInit (void);      // 8034ee9c
+    void VIInit (void);      // 8034ee9c
     bool VIShouldCloseWindow(); // not official
 }

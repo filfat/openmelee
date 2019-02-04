@@ -1,4 +1,5 @@
 #define __DEBUG__
+#define __LINUX__
 
 #include <stdio.h>
 #include "main.h"
@@ -13,8 +14,8 @@ int main(int argc, char *argv[]) {
     OS::OSReport("# ---------------------------------------------\n");
     OS::OSReport("# OpenMelee %s\n", "(Based on SSBM 1.02 NTSC)");
 
-    VI::VIInit();
     DVD::DVDInit();
+    VI::VIInit();
     PAD::PADInit();
     CARD::CARDInit();
 
@@ -43,7 +44,10 @@ int main(int argc, char *argv[]) {
     OS::OSReport("# GC Calendar Year %d Month %d Day %d\n", calendar->year, calendar->mon, calendar->mday);
     OS::OSReport("#             Hour %d Min %d Sec %d \n", calendar->hour, calendar->min, calendar->sec);
 
+    GX::GXSetCopyClear({ (int8_t)0, (int8_t)0, (int8_t)0, (int8_t)255 }, 0);
     while(!VI::VIShouldCloseWindow()) {
+        GX::GXDrawBegin();
+
         GX::GXDrawDone();
     };
 

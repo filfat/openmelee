@@ -2,7 +2,6 @@
 
 #include "os.h"
 #include "../../stub/stub.h"
-#include "../../logger/logger.h"
 
 namespace OS {
     void OSInit (void) {
