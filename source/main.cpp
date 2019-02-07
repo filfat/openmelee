@@ -1,5 +1,3 @@
-#define __DEBUG__
-
 #include <stdio.h>
 #include "main.h"
 
