@@ -1,7 +1,11 @@
 #include "state.h"
 
 namespace Engine {
-    namespace State {
+    State::State(std::string default_view) {
+        
+    }
+
+    State::~State() {
         
     }
 }
