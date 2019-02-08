@@ -21,9 +21,11 @@ if build_machine.system() == 'linux' or build_machine.system() == 'darwin'
   # TODO: Metal for darwin?
   dep_glew = dependency('glew')
   dep_glfw3 = dependency('glfw3')
+  dep_usb = dependency('libusb')
 
   cpp_args += ['-D__USE_OPENGL__']
-  dep += [dep_glew, dep_glfw3]
+  link_args += ['-lusb-1.0'] # temporary
+  dep += [dep_glew, dep_glfw3, dep_usb]
 elif
   # TODO: subproject for OpenGL? D3D? Vulkan?
 endif

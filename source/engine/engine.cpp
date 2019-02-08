@@ -39,6 +39,8 @@ namespace Engine {
         GX::GXSetCopyClear({ (int8_t)0, (int8_t)0, (int8_t)0, (int8_t)255 }, 0);
     }
     void Exit(void) {
+        PAD::PADExit();
+        
         OS::OSHalt("Exiting...\n");
     }
     
