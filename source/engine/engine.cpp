@@ -24,7 +24,7 @@ namespace Engine {
         GX::GXFifoObj *fifo = GX::GXInit(NULL, NULL);
         HSD::HSDGXSetFifoObj(fifo);
 
-        int32_t res = GX::GXSetMisc(1, 8);
+        /*int32_t res = */ GX::GXSetMisc(1, 8);
 
         HSD::HSDVISetUserPostRetraceCallback();
         HSD::HSDVISetBlack(false);
@@ -37,6 +37,8 @@ namespace Engine {
         OS::OSReport("#             Hour %d Min %d Sec %d \n", calendar->hour, calendar->min, calendar->sec);
 
         GX::GXSetCopyClear({ (int8_t)0, (int8_t)0, (int8_t)0, (int8_t)255 }, 0);
+
+        return 0;
     }
     void Exit(void) {
         PAD::PADExit();

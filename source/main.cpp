@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
     #endif
 
     Engine::Init();
-    Engine::State *state = new Engine::State();
+    // Engine::State *state = new Engine::State();
 
     do {
         Engine::PrepareTick();

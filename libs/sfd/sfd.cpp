@@ -39,7 +39,7 @@ const char* sfd_get_error(void) {
 
 
 static int next_filter(char *dst, const char **p) {
-  int len;
+  u_int32_t len;
 
   *p += strspn(*p, "|");
   if (**p == '\0') {
@@ -47,7 +47,7 @@ static int next_filter(char *dst, const char **p) {
   }
 
   len = strcspn(*p, "|");
-  memcpy(dst, *p, len);
+  memcpy(dst, *p, (u_int32_t)len);
   dst[len] = '\0';
   *p += len;
 
@@ -144,7 +144,8 @@ static const char* file_dialog(sfd_Options *opt, int save) {
   char *p;
   const char *title;
   FILE *fp;
-  int n, len;
+  u_int32_t n;
+  int len;
 
   last_error = NULL;
 
@@ -155,10 +156,10 @@ static const char* file_dialog(sfd_Options *opt, int save) {
   }
 
 
-  n = sprintf(buf, "zenity --file-selection");
+  n = (u_int32_t)sprintf(buf, "zenity --file-selection");
 
   if (save) {
-    n += sprintf(buf + n, " --save --confirm-overwrite");
+    n += (u_int32_t)sprintf(buf + n, " --save --confirm-overwrite");
   }
 
   if (opt->title) {
@@ -167,37 +168,37 @@ static const char* file_dialog(sfd_Options *opt, int save) {
     title = save ? "Save File" : "Open File";
   }
 
-  n += sprintf(buf + n, " --title=\"%s\"", title);
+  n += (u_int32_t)sprintf(buf + n, " --title=\"%s\"", title);
 
   if (opt->path && opt->path[0] != '\0') {
-    n += sprintf(buf + n, " --filename=\"");
+    n += (u_int32_t)sprintf(buf + n, " --filename=\"");
     p = realpath(opt->path, buf + n);
     if (p == NULL) {
       last_error = "call to realpath() failed";
       return NULL;
     }
     n += strlen(buf + n);
-    n += sprintf(buf + n, "/\"");
+    n += (u_int32_t)sprintf(buf + n, "/\"");
   }
 
   if (opt->filter) {
     char b[64];
     const char *p;
-    n += sprintf(buf + n, " --file-filter=\"");
+    n += (u_int32_t)sprintf(buf + n, " --file-filter=\"");
 
     if (opt->filter_name) {
-      n += sprintf(buf + n, "%s | ", opt->filter_name);
+      n += (u_int32_t)sprintf(buf + n, "%s | ", opt->filter_name);
     }
 
     p = opt->filter;
     while (next_filter(b, &p)) {
-      n += sprintf(buf + n, "\"%s\" ", b);
+      n += (u_int32_t)sprintf(buf + n, "\"%s\" ", b);
     }
 
-    n += sprintf(buf + n, "\"");
+    n += (u_int32_t)sprintf(buf + n, "\"");
   }
 
-  n += sprintf(buf + n, " --file-filter=\"All Files | *\"");
+  n += (u_int32_t)sprintf(buf + n, " --file-filter=\"All Files | *\"");
 
 
   fp = popen(buf, "r");
