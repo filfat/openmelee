@@ -3,6 +3,7 @@ project('openmelee', 'cpp',
   license : 'MPL2',
   default_options : ['c_std=c17', 'cpp_std=c++17'])
 
+security_args = []
 cpp_args = [
   '-D__DEBUG__'
 ]
@@ -32,4 +33,5 @@ endif
 
 source_files_finder = run_command('source_files.sh')
 main_src = source_files_finder.stdout().strip().split('\n')
+cpp_args += security_args
 executable('openmelee', main_src, dependencies: dep, cpp_args: cpp_args, link_args: link_args)

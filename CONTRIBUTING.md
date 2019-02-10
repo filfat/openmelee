@@ -37,9 +37,8 @@ namespace Example {
     // Namespace contents are indented
 
     // Declare globals at the top
-    int g_foo{};            // {} can be used to initialize types as 0, false, or nullptr
-    char* g_some_pointer{}; // Pointer * and reference & stick to the type name, and make sure to
-                            // initialize as nullptr!
+    int g_foo = 0;          // ALWAYS intitialize variables.
+    char* g_some_pointer = nullptr;
 
     /// A colorful enum.
     enum SomeEnum {
@@ -53,7 +52,7 @@ namespace Example {
      * Note that the asterisks are indented by one space to align to the first line.
      */
     struct typedef {
-        int x{}, y{}; // Always intitialize member variables!
+        int x = 0, y = 0; // ALWAYS intitialize member variables!
     } Position;
 
     // Use "typename" rather than "class" here
@@ -72,7 +71,7 @@ namespace Example {
         switch (var) {
             // Indentation for case label
             case 1: {
-                int case_var{var + 3};
+                int case_var = (var + 3);
                 DoSomething(case_var);
                 break;
             }
