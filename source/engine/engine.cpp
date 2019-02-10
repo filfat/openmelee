@@ -36,7 +36,7 @@ namespace Engine {
         OS::OSReport("# GC Calendar Year %d Month %d Day %d\n", calendar->year, calendar->mon, calendar->mday);
         OS::OSReport("#             Hour %d Min %d Sec %d \n", calendar->hour, calendar->min, calendar->sec);
 
-        GX::GXSetCopyClear({ (int8_t)0, (int8_t)0, (int8_t)0, (int8_t)255 }, 0);
+        GX::GXSetCopyClear({ 0, 0, 0, 255 }, 0);
 
         return 0;
     }

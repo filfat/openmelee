@@ -13,8 +13,9 @@ namespace VI {
     void VIInit (void) {
         glfwSetErrorCallback(&glfwError);
 
-        if(!glfwInit()) {
+        if(glfwInit() != GLFW_TRUE) {
             OS::OSPanic(__FILE__, __LINE__, "VIInit->Failed initialize GLFW");
+            return;
         }
 
         glfwWindowHint(GLFW_SAMPLES, 4);
@@ -23,9 +24,25 @@ namespace VI {
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
         VI::g_window = glfwCreateWindow(640, 480, "OpenMelee", NULL, NULL);
+        if(g_window == nullptr) {
+            OS::OSPanic(__FILE__, __LINE__, "VIInit->Failed to create window");
+            return;
+        }
 
         std::cout << termcolor::blue << "(VI)       " << termcolor::reset;
         printf("VIInit->Info: Created window\n");
+
+        glfwMakeContextCurrent(g_window);
+
+        glewExperimental = GL_TRUE;
+        if(glewInit() != GLEW_OK) {
+            OS::OSPanic(__FILE__, __LINE__, "VIInit->Failed initialize GLEW");
+            return;
+        }
+    }
+    int32_t VIExit (void) {
+        glfwTerminate();
+        return 0;
     }
 
     bool VIShouldCloseWindow() {
