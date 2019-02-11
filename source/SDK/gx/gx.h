@@ -6,6 +6,27 @@
 #include "../os/os.h"
 
 namespace GX {
+    typedef enum {
+        GX_POINTS,
+        GX_LINES,
+        GX_LINESTRIP,
+        GX_TRIANGLES,
+        GX_TRIANGLESTRIP,
+        GX_TRIANGLEFAN,
+        GX_QUADS
+    } GXPrimitive;
+    typedef enum {
+        GX_VTXFMT0,
+        GX_VTXFMT1,
+        GX_VTXFMT2,
+        GX_VTXFMT3,
+        GX_VTXFMT4,
+        GX_VTXFMT5,
+        GX_VTXFMT6,
+        GX_VTXFMT7,
+        GX_MAX_VTXFMT
+    } GXVtxFmt;
+
     typedef struct {
         uint8_t pad[128];
     } GXFifoObj;
@@ -26,4 +47,7 @@ namespace GX {
 
     void GXDrawBegin (void);                            // not official
     void GXDrawDone (void);
+
+    void GXBegin (GX::GXPrimitive type, GXVtxFmt vtxfmt, u_int16_t nverts);
+    void GXEnd (void);
 }

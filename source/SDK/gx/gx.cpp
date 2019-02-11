@@ -1,7 +1,7 @@
 #include "gx.h"
 #include "../../stub/stub.h"
 #include "../vi/vi.h"
-#include "../../libs/termcolor.hpp"
+#include "../../../libs/termcolor.hpp"
 
 namespace GX {
     GX::GXFifoObj* g_main_fifo;
@@ -40,12 +40,38 @@ namespace GX {
         glViewport(0, 0, width, height);
 
         // Clear the buffer
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
     void GXDrawDone (void) {
         glfwSwapBuffers(VI::g_window);
 
         // Should probably be moved to the Pad namespace.
         glfwPollEvents();
+    }
+
+    void GXBegin (GX::GXPrimitive type, GXVtxFmt vtxfmt, u_int16_t nverts) {
+        GLenum gl_type = GL_TRIANGLES;
+
+        switch(type) {
+            case GX_POINTS:
+                gl_type = GL_POINTS;
+                break;
+            case GX_LINES:
+                gl_type = GL_LINES;
+                break;
+            case GX_TRIANGLESTRIP:
+                gl_type = GL_TRIANGLE_STRIP;
+                break;
+            case GX_QUADS: 
+                gl_type = GL_QUADS;
+                break;
+            default:
+                stub();
+        };
+
+        glBegin(gl_type);
+    }
+    void GXEnd (void) {
+        glEnd();
     }
 }

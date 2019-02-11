@@ -1,6 +1,6 @@
 #include "vi.h"
 #include "../../stub/stub.h"
-#include "../../libs/termcolor.hpp"
+#include "../../../libs/termcolor.hpp"
 
 static void glfwError(int id, const char* description) {
     std::cout << termcolor::blue << "(VI)       " << termcolor::reset;
