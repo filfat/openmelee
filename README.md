@@ -12,5 +12,9 @@ A automated tool for decompiling and renaming the re:d functions to human-readab
 ### Styleguide
 This isn't really decided upon yet, see issue #3. Basically, try to stick to the codestyle used in the current file you're working on. Also, try not to add more dependencies unless absolutely necessary (or the alternative requires a huge implementation).
 
+## Thanks
+  * [@hosaka-corp](https://github.com/hosaka-corp) for [melee-re](https://github.com/hosaka-corp/melee-re), a community symbolmap.
+  * [@PsiLupan](https://github.com/PsiLupan) for [MeleeReassembled](https://github.com/PsiLupan/MeleeReassembled), porting the bascic of melee to devkitppc.
+
 ## License
 Currently licensed under Mozilla Public License 2.0, will probably change to MIT in the future depending on community feedback.

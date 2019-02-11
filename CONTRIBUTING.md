@@ -34,11 +34,11 @@ Follow the indentation/whitespace style shown below. Do not use tabs, use 4-spac
 #include "video_core/video_core.h"
 
 namespace Example {
-    // Namespace contents are indented
+    // Namespace content is indented
 
     // Declare globals at the top
-    int g_foo = 0;          // ALWAYS intitialize variables.
-    char* g_some_pointer = nullptr;
+    int32_t g_foo = 0; // ALWAYS intitialize variables.
+    int8_t* g_some_pointer = nullptr; // Use normalized types.
 
     /// A colorful enum.
     enum SomeEnum {
@@ -47,12 +47,8 @@ namespace Example {
         ColorBlue,  ///< Not actually the color of water.
     };
 
-    /**
-     * Very important struct that does a lot of stuff.
-     * Note that the asterisks are indented by one space to align to the first line.
-     */
     struct typedef {
-        int x = 0, y = 0; // ALWAYS intitialize member variables!
+        int32_t x = 0, y = 0; // ALWAYS try to intitialize member variables!
     } Position;
 
     // Use "typename" rather than "class" here
@@ -64,14 +60,14 @@ namespace Example {
         }
 
         // Place a single space after the for loop semicolons, prefer after-increment
-        for (int i = 0; i < 25; i++) {
+        for (int32_t i = 0; i < 25; i++) {
             // This is how we write loops
         }
 
         switch (var) {
             // Indentation for case label
             case 1: {
-                int case_var = (var + 3);
+                int32_t case_var = (var + 3);
                 DoSomething(case_var);
                 break;
             }
@@ -79,6 +75,12 @@ namespace Example {
                 DoSomething(var);
                 return;
 
+            case 4:
+                int32_t x = 0;
+                [[fallthrough]]; // Explicit fall through
+            case 5:
+                DoSomethingElse();
+                break;
             default:
                 // Yes, even break for the last case
                 break;
