@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "../os/os.h"
@@ -40,6 +41,13 @@ namespace GX {
     extern GXFifoObj* g_main_fifo;
     extern GX::GXColor g_clear_color;
 
+    extern GLuint g_program;
+
+    extern std::vector<GLfloat> g_vertex_data;
+    extern u_int32_t g_vertex_data_index;
+    extern GLuint g_vertex_buffer;
+    extern GLenum g_vertex_type;
+
     GXFifoObj* GXInit (void* base, uint32_t size);      // 8033a780
     void GXExit (void);                                 // not official
     int32_t GXSetMisc (int32_t u1, int32_t val);        // 8033cbc0
@@ -48,6 +56,9 @@ namespace GX {
     void GXDrawBegin (void);                            // not official
     void GXDrawDone (void);
 
-    void GXBegin (GX::GXPrimitive type, GXVtxFmt vtxfmt, u_int16_t nverts);
+    void GXBegin (GX::GXPrimitive type, GXVtxFmt vtxfmt, u_int32_t nverts);
     void GXEnd (void);
+
+    void GXPosition2f32(GLfloat x, GLfloat y);
+    void GXPosition3f32(GLfloat x, GLfloat y, GLfloat z);
 }

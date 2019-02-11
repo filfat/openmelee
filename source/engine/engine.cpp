@@ -44,27 +44,42 @@ namespace Engine {
 
         GX::GXSetCopyClear({ 0, 0, 0, 255 }, 0);
 
+        static const char *vert_shader = "\
+        #version 330 core\n\n\
+        layout(location = 0) in vec4 position;\n\
+        void main(){\n\
+            gl_Position = possition;\n\
+        }";
+
+        static const char *frag_shader = "\
+        #version 330 core\n\n\
+        layout(location = 0) out vec4 color;\n\
+        void main(){\n\
+            color = vec4(1.0, 0.0, 0.0, 1.0);\n\
+        }";
+
+        GX::g_program = GL::GLCompileShader((const char*)vert_shader, (const char*)frag_shader);
+
         return 0;
     }
     void Exit(void) {
         PAD::PADExit();
+        GX::GXExit();
+        VI::VIExit();
         
         OS::OSHalt("Exiting...\n");
     }
     
     void PrepareTick(void) {
         GX::GXDrawBegin();
-        glLoadIdentity();//load identity matrix
-        glTranslatef(0.0f,0.0f,-4.0f);//move forward 4 units
-        glColor3f(0.0f,0.0f,1.0f); //blue color
-        glPointSize(10.0f);//set point size to 10 pixels
     }
     bool DoTick(void) {
         // TODO: Game logic?
 
-        GX::GXBegin(GX::GX_LINES, GX::GX_VTXFMT0, 1);
-            glVertex3f(1.0f,1.0f,0.0f);//upper-right corner
-            glVertex3f(-1.0f,-1.0f,0.0f);//lower-left corner
+        GX::GXBegin(GX::GX_TRIANGLES, GX::GX_VTXFMT0, 3);
+            GX::GXPosition2f32(-0.5f, -0.5f);
+            GX::GXPosition2f32(0.5f, 0.5f);
+            GX::GXPosition2f32(0.5f, -0.5f);
         GX::GXEnd();
 
         GX::GXDrawDone();
