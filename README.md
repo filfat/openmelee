@@ -14,7 +14,7 @@ This isn't really decided upon yet, see issue #3. Basically, try to stick to the
 
 ## Thanks
   * [@hosaka-corp](https://github.com/hosaka-corp) for [melee-re](https://github.com/hosaka-corp/melee-re), a community symbolmap.
-  * [@PsiLupan](https://github.com/PsiLupan) for [MeleeReassembled](https://github.com/PsiLupan/MeleeReassembled), porting the bascic of melee to devkitppc.
+  * [@PsiLupan](https://github.com/PsiLupan) for [MeleeReassembled](https://github.com/PsiLupan/MeleeReassembled), porting the basics of melee to devkitppc.
 
 ## License
 Currently licensed under Mozilla Public License 2.0, will probably change to MIT in the future depending on community feedback.

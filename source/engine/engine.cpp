@@ -17,7 +17,13 @@ namespace Engine {
         OS::OSAllocFromArenaHi((uint32_t)0x1800000, (uint32_t)4);
         OS::OSReport("# Arena Size %d MB\n", mem_size / 1000 / 1000);
 
-        HSD::HSDSetInitParameter(1, 2);
+        HSD::HSDInitComponent();
+
+        HSD::HSDSetInitParameter(HSD::HSD_INIT_XFB_MAX_NUM, 2);
+        HSD::HSDSetInitParameter(HSD::HSD_INIT_RENDER_MODE_OBJ, NULL);
+        HSD::HSDSetInitParameter(HSD::HSD_INIT_FIFO_SIZE, 0x40000);
+        HSD::HSDSetInitParameter(HSD::HSD_INIT_HEAP_MAX_NUM, 4);
+
         HSD::HSDAllocateXFB(2, NULL);
         HSD::HSDAllocateFIFO(0x40000);
 
@@ -48,9 +54,18 @@ namespace Engine {
     
     void PrepareTick(void) {
         GX::GXDrawBegin();
+        glLoadIdentity();//load identity matrix
+        glTranslatef(0.0f,0.0f,-4.0f);//move forward 4 units
+        glColor3f(0.0f,0.0f,1.0f); //blue color
+        glPointSize(10.0f);//set point size to 10 pixels
     }
     bool DoTick(void) {
         // TODO: Game logic?
+
+        GX::GXBegin(GX::GX_LINES, GX::GX_VTXFMT0, 1);
+            glVertex3f(1.0f,1.0f,0.0f);//upper-right corner
+            glVertex3f(-1.0f,-1.0f,0.0f);//lower-left corner
+        GX::GXEnd();
 
         GX::GXDrawDone();
         return !(VI::VIShouldCloseWindow());
