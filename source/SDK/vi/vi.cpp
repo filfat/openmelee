@@ -13,7 +13,7 @@ namespace VI {
     void VIInit (void) {
         glfwSetErrorCallback(&glfwError);
 
-        if(glfwInit() != GLFW_TRUE) {
+        if(glfwInit() != GL_TRUE) {
             OS::OSPanic(__FILE__, __LINE__, "VIInit->Failed initialize GLFW");
             return;
         }
