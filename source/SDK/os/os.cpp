@@ -25,6 +25,8 @@ namespace OS {
         std::cout << termcolor::blue << "(OSHalt)   " << termcolor::reset;
         vprintf(out, args);
         va_end(args);
+
+        exit(1);
     }
     void OSPanic(const char* file, int line, const char* out, ...) {
         std::cout << termcolor::red << "(FATAL)    " << termcolor::reset << file << ':' << line << ' ' << out << std::endl;

@@ -1,6 +1,8 @@
 #include "engine.h"
 
 namespace Engine {
+    bool g_running = true;
+
     int32_t Init(void) {
         OS::OSInit();
 
@@ -69,6 +71,12 @@ namespace Engine {
         
         OS::OSHalt("Exiting...\n");
     }
+    void ForceExit(void) {
+        g_running = false;
+
+        OS::OSReport("Force quiting...\n");
+        exit(1);
+    }
     
     void PrepareTick(void) {
         GX::GXDrawBegin();
@@ -83,6 +91,6 @@ namespace Engine {
         GX::GXEnd();
 
         GX::GXDrawDone();
-        return !(VI::VIShouldCloseWindow());
+        return !(g_running && VI::VIShouldCloseWindow());
     }
 }
