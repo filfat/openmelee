@@ -41,11 +41,11 @@ namespace Example {
     int8_t* g_some_pointer = nullptr; // Use normalized types.
 
     /// A colorful enum.
-    enum SomeEnum {
+    typedef enum {
         ColorRed,   ///< The color of fire.
         ColorGreen, ///< The color of grass.
         ColorBlue,  ///< Not actually the color of water.
-    };
+    } SomeEnum;
 
     struct typedef {
         int32_t x = 0, y = 0; // ALWAYS try to intitialize member variables!
