@@ -48,7 +48,7 @@ namespace Engine {
         #version 330 core\n\n\
         layout(location = 0) in vec4 position;\n\
         void main(){\n\
-            gl_Position = possition;\n\
+            gl_Position = position;\n\
         }";
 
         static const char *frag_shader = "\

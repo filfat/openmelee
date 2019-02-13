@@ -3,9 +3,10 @@
 
 namespace PAD {
     #ifdef __LINUX__
-        libusb_device_handle *g_device_handle;
-        libusb_context *g_context;
+        libusb_device_handle *g_device_handle = nullptr;
+        libusb_context *g_context = nullptr;
     #endif
+    PADStatus g_previous_status;
 
     int32_t PADInit (void) {
         #ifdef __LINUX__
@@ -26,5 +27,18 @@ namespace PAD {
         #endif
         
         return stub();
+    }
+
+    void PADRead (PAD::PADStatus* status) {
+        PAD::g_previous_status = *status;
+
+        stub();
+    }
+
+    u_int16_t PADButtonUp(PAD::PADStatus status) {
+        return ((g_previous_status.button ^ status.button) & (status.button));
+    }
+    u_int16_t PADButtonDown(PAD::PADStatus status) {
+        return ((g_previous_status.button ^ status.button) & (g_previous_status.button));
     }
 }
