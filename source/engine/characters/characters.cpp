@@ -5,12 +5,14 @@ namespace Engine {
     namespace Characters {
         std::vector<Engine::Characters::Character> g_characters;
 
-        int32_t Init(void) {
+        std::vector<Engine::Characters::Character> Init(void) {
             std::string path = "./assets/characters";
-            for (const auto & entry : std::experimental::filesystem::directory_iterator(path))
-                Engine::Characters::g_characters.push_back(Engine::Characters::Character((const char*)entry.path().c_str()));
+            for (const auto & entry : std::experimental::filesystem::directory_iterator(path)) {
+                auto character = Engine::Characters::Character((const char*)entry.path().c_str());
+                Engine::Characters::g_characters.push_back(character);
+            }
 
-            return 0;
+            return g_characters;
         }
     }
 }

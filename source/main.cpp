@@ -19,8 +19,6 @@ int main(int argc, char *argv[]) {
     #endif
 
     Engine::Init();
-    Engine::Characters::Init();
-    // Engine::State *state = new Engine::State();
 
     do {
         Engine::PrepareTick();

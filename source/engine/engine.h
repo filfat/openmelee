@@ -11,6 +11,7 @@ namespace Engine {
     extern bool g_running;
 
     int32_t Init(void);
+    void GameInit(void);
     void Exit(void);
     void ForceExit(void);
 

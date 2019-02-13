@@ -1,0 +1,13 @@
+{
+    "id": "fox",
+    "name": "Fox",
+
+    "attributes": {
+        "walkInitVelocity": 0,
+        "walkMaxVelocity": 0,
+        "walkAcceleration": 0,
+        "weight": 0
+    },
+
+    "model": null
+}

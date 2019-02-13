@@ -1,9 +1,34 @@
 #include "engine.h"
 
 namespace Engine {
-    bool g_running = true;
+    Engine::State g_state;
+    std::vector<Engine::Characters::Character> g_characters;
 
     int32_t Init(void) {
+        Engine::GameInit();
+
+        static const char *vert_shader = "\
+        #version 330 core\n\n\
+        layout(location = 0) in vec4 position;\n\
+        void main(){\n\
+            gl_Position = position;\n\
+        }";
+
+        static const char *frag_shader = "\
+        #version 330 core\n\n\
+        layout(location = 0) out vec4 color;\n\
+        void main(){\n\
+            color = vec4(1.0, 0.0, 0.0, 1.0);\n\
+        }";
+
+        GX::g_program = GL::GLCompileShader((const char*)vert_shader, (const char*)frag_shader);
+
+        g_state = Engine::State();
+        g_characters = Engine::Characters::Init();
+
+        return 0;
+    }
+    void GameInit(void) {
         OS::OSInit();
 
         OS::OSReport("# ---------------------------------------------\n");
@@ -45,25 +70,8 @@ namespace Engine {
         OS::OSReport("#             Hour %d Min %d Sec %d \n", calendar->hour, calendar->min, calendar->sec);
 
         GX::GXSetCopyClear({ 0, 0, 0, 255 }, 0);
-
-        static const char *vert_shader = "\
-        #version 330 core\n\n\
-        layout(location = 0) in vec4 position;\n\
-        void main(){\n\
-            gl_Position = position;\n\
-        }";
-
-        static const char *frag_shader = "\
-        #version 330 core\n\n\
-        layout(location = 0) out vec4 color;\n\
-        void main(){\n\
-            color = vec4(1.0, 0.0, 0.0, 1.0);\n\
-        }";
-
-        GX::g_program = GL::GLCompileShader((const char*)vert_shader, (const char*)frag_shader);
-
-        return 0;
     }
+
     void Exit(void) {
         PAD::PADExit();
         GX::GXExit();
@@ -72,8 +80,7 @@ namespace Engine {
         OS::OSHalt("Exiting...\n");
     }
     void ForceExit(void) {
-        g_running = false;
-
+        g_state.running = false;
         OS::OSReport("Force quiting...\n");
         exit(1);
     }
@@ -91,6 +98,6 @@ namespace Engine {
         GX::GXEnd();
 
         GX::GXDrawDone();
-        return !(g_running && VI::VIShouldCloseWindow());
+        return !(g_state.running && VI::VIShouldCloseWindow());
     }
 }
