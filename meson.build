@@ -47,7 +47,7 @@ if build_machine.system() == 'linux' or build_machine.system() == 'darwin' # Lin
   dep_usb = dependency('libusb-1.0')
 
   cpp_args += ['-D__USE_OPENGL__']
-  link_args += ['-lusb-1.0'] # temporary
+  link_args += ['-lstdc++fs']
   dep += [dep_glew, dep_glfw3, dep_usb]
 elif # Windows
   # TODO: subproject for OpenGL? D3D? Vulkan?

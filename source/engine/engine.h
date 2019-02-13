@@ -1,4 +1,5 @@
 #pragma once
+#include "characters/characters.h"
 #include "gl/gl.h"
 #include "gui/gui.h"
 #include "iso/iso.h"

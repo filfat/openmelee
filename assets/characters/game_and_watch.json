@@ -1,0 +1,13 @@
+{
+    "id": "game_and_watch",
+    "name": "Mr. Game & Watch",
+
+    "attributes": {
+        "walkInitVelocity": 0.1,
+        "walkMaxVelocity": 1.1,
+        "walkAcceleration": 0.1,
+        "weight": 60
+    },
+
+    "model": "$assets/extracted/PlGw.dat"
+}
