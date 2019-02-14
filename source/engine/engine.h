@@ -3,6 +3,7 @@
 #include "gl/gl.h"
 #include "gui/gui.h"
 #include "iso/iso.h"
+#include "stages/stages.h"
 #include "state/state.h"
 
 #include "../SDK/sdk.h"

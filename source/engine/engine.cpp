@@ -3,6 +3,7 @@
 namespace Engine {
     Engine::State g_state;
     std::vector<Engine::Characters::Character> g_characters;
+    std::vector<Engine::Stages::Stage> g_stages;
 
     int32_t Init(void) {
         Engine::GameInit();
@@ -25,6 +26,7 @@ namespace Engine {
 
         g_state = Engine::State();
         g_characters = Engine::Characters::Init();
+        g_stages = Engine::Stages::Init();
 
         return 0;
     }
