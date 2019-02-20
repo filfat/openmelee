@@ -1,4 +1,5 @@
 #include "character.h"
+#include "../../SDK/os/os.h"
 #include "../../stub/stub.h"
 #include "../../../libs/termcolor.hpp"
 #include "../../../libs/json.hpp"
@@ -20,9 +21,21 @@ namespace Engine {
             name = data["name"].get<std::string>();
 
             attributes = Engine::Characters::CharacterAttributes();
-            attributes.walkInitVelocity = data["attributes"]["walkInitVelocity"].get<float>();
-            attributes.walkMaxVelocity = data["attributes"]["walkMaxVelocity"].get<float>();
-            attributes.walkAcceleration = data["attributes"]["walkAcceleration"].get<float>();
+
+            try {
+                attributes.walk_velocity_init = data["attributes"]["walkInitVelocity"].get<float>();
+                attributes.walk_velocity_max = data["attributes"]["walkMaxVelocity"].get<float>();
+                attributes.walk_acceleration = data["attributes"]["walkAcceleration"].get<float>();
+                attributes.walk_speed_medium = data["attributes"]["walkMediumSpeed"].get<float>();
+                attributes.walk_speed_fast = data["attributes"]["walkFastSpeed"].get<float>();
+            } catch (...) {
+                printf("                                  Failed to get attributes!\n");
+                
+                ready = false;
+                return;
+            }
+
+            ready = true;
         }
     }
 }

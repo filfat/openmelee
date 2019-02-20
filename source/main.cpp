@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
     #endif
 
     #ifndef __DEBUG__
-    stdout = freopen("openmelee.log", "w", stdout);
+        stdout = freopen("openmelee.log", "w", stdout);
     #endif
 
     Engine::Init();

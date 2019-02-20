@@ -1,4 +1,7 @@
 #include "engine.h"
+#ifdef __LINUX__
+    #include <unistd.h>
+#endif
 
 namespace Engine {
     Engine::State g_state;
@@ -88,6 +91,10 @@ namespace Engine {
     }
     
     void PrepareTick(void) {
+        #ifdef __LINUX__
+            usleep(0);
+        #endif
+
         GX::GXDrawBegin();
     }
     bool DoTick(void) {
