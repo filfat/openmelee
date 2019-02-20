@@ -19,12 +19,7 @@ int main(int argc, char *argv[]) {
     #endif
 
     Engine::Init();
-
-    do {
-        Engine::PrepareTick();
-        Engine::GUI::DoTick();
-    } while(Engine::DoTick());
-
+    Engine::Start();
     Engine::Exit();
     return 0;
 }

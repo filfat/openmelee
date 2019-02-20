@@ -1,4 +1,5 @@
 #pragma once
+#include <chrono>
 #include "characters/characters.h"
 #include "gl/gl.h"
 #include "gui/gui.h"
@@ -9,13 +10,15 @@
 #include "../SDK/sdk.h"
 
 namespace Engine {
-    extern bool g_running;
-
     int32_t Init(void);
     void GameInit(void);
+
     void Exit(void);
     void ForceExit(void);
 
-    void PrepareTick(void);
-    bool DoTick(void);
+    void Start(void);
+    void Update(State &state);
+    void Render(const State &state);
+
+    State Interpolate(const State &current, const State &previous, float alpha);
 }

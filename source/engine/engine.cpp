@@ -1,12 +1,18 @@
+#include <chrono>
 #include "engine.h"
-#ifdef __LINUX__
-    #include <unistd.h>
+#include "../stub/stub.h"
+
+// FIXME
+#ifndef f32_t
+#define f32_t float
 #endif
 
+using namespace std::chrono_literals;
+
 namespace Engine {
-    Engine::State g_state;
     std::vector<Engine::Characters::Character> g_characters;
     std::vector<Engine::Stages::Stage> g_stages;
+    constexpr std::chrono::nanoseconds timestep(16ms); // TODO: Handle 144, 244, and "unlimited" (999)
 
     int32_t Init(void) {
         Engine::GameInit();
@@ -26,8 +32,6 @@ namespace Engine {
         }";
 
         GX::g_program = GL::GLCompileShader((const char*)vert_shader, (const char*)frag_shader);
-
-        g_state = Engine::State();
         g_characters = Engine::Characters::Init();
         g_stages = Engine::Stages::Init();
 
@@ -85,28 +89,54 @@ namespace Engine {
         OS::OSHalt("Exiting...\n");
     }
     void ForceExit(void) {
-        g_state.running = false;
         OS::OSReport("Force quiting...\n");
         exit(1);
     }
-    
-    void PrepareTick(void) {
-        #ifdef __LINUX__
-            usleep(0);
-        #endif
 
-        GX::GXDrawBegin();
+    void Start() {
+        using clock = std::chrono::high_resolution_clock;
+
+        Engine::State state;
+        Engine::State previous_state;
+
+        std::chrono::nanoseconds lag(0ns);
+        auto time_start = clock::now();
+
+        while(state.running && !VI::VIShouldCloseWindow()) {
+            auto delta_time = clock::now() - time_start;
+            time_start = clock::now();
+            lag += std::chrono::duration_cast<std::chrono::nanoseconds>(delta_time);
+
+            while(lag >= timestep) {
+                lag -= timestep;
+
+                previous_state = state;
+                Engine::Update(state);
+            }
+
+            auto alpha = (f32_t) lag.count() / timestep.count();
+            auto interpolated_state = Engine::Interpolate(state, previous_state, alpha);
+
+            Engine::Render(interpolated_state);
+        }
     }
-    bool DoTick(void) {
-        // TODO: Game logic?
 
-        GX::GXBegin(GX::GX_TRIANGLES, GX::GX_VTXFMT0, 3);
-            GX::GXPosition2f32(-0.5f, -0.5f);
-            GX::GXPosition2f32(0.5f, 0.5f);
-            GX::GXPosition2f32(0.5f, -0.5f);
-        GX::GXEnd();
-
+    void Update(State &state) {
+        stub();
+    }
+    void Render(const State &state) {
+        GX::GXDrawBegin();
+            GX::GXBegin(GX::GX_TRIANGLES, GX::GX_VTXFMT0, 3);
+                GX::GXPosition2f32(-0.5f, -0.5f);
+                GX::GXPosition2f32(0.5f, 0.5f);
+                GX::GXPosition2f32(0.5f, -0.5f);
+            GX::GXEnd();
         GX::GXDrawDone();
-        return !(g_state.running && VI::VIShouldCloseWindow());
+
+        stub();
+    }
+    State Interpolate(const State &current, const State &previous, f32_t alpha) {
+        stub();
+        return current;
     }
 }

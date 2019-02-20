@@ -4,7 +4,9 @@
 #include <fstream>
 
 // FIXME
+#ifndef f32_t
 #define f32_t float
+#endif
 
 namespace Engine {
     namespace Characters {
