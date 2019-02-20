@@ -122,6 +122,8 @@ namespace Engine {
     }
 
     void Update(State &state) {
+        PAD::PADStatus input;
+        PAD::PADRead(&input);
         stub();
     }
     void Render(const State &state) {
