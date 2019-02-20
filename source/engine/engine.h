@@ -4,6 +4,7 @@
 #include "gl/gl.h"
 #include "gui/gui.h"
 #include "iso/iso.h"
+#include "scenes/scenes.h"
 #include "stages/stages.h"
 #include "state/state.h"
 

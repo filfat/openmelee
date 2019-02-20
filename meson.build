@@ -45,10 +45,11 @@ if build_machine.system() == 'linux' or build_machine.system() == 'darwin' # Lin
   dep_glew = dependency('glew')
   dep_glfw3 = dependency('glfw3')
   dep_usb = dependency('libusb-1.0')
+  dep_lua = dependency('lua5.1')
 
   cpp_args += ['-D__USE_OPENGL__']
   link_args += ['-lstdc++fs']
-  dep += [dep_glew, dep_glfw3, dep_usb]
+  dep += [dep_glew, dep_glfw3, dep_usb, dep_lua]
 elif # Windows
   # TODO: subproject for OpenGL? D3D? Vulkan?
 endif

@@ -12,7 +12,7 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install python3 python3-setuptools python3-pip ninja-build make g++-7 -y
   - sudo pip3 install meson
-  - sudo apt-get install libusb-dev libusb-1.0-0-dev libglfw3-dev libglew-dev -y
+  - sudo apt-get install libusb-dev libusb-1.0-0-dev libglfw3-dev libglew-dev liblua5.1-0-dev -y
 
 script:
   - gcc -v
