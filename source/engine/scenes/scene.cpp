@@ -3,6 +3,9 @@
 namespace Engine {
     namespace Scenes {
         Scene::Scene(const char* path) {
+            sol::state state;
+        }
+        Scene::~Scene() {
 
         }
 
